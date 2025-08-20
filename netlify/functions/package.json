@@ -1,8 +1,10 @@
 {
   "name": "aga-media-netlify-functions",
   "version": "1.0.0",
-  "description": "Netlify Functions for AGA Media website",
+  "description": "Netlify Functions for AGA MEDIA INC",
+  "main": "index.js",
   "dependencies": {
-    "@octokit/rest": "^19.0.7"
+    "@octokit/rest": "^19.0.7",
+    "axios": "^1.4.0"
   }
 }

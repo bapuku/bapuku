@@ -12,7 +12,6 @@
 
 [functions]
   directory = "netlify/functions"
-  node_bundler = "esbuild"
 
 [[headers]]
   for = "/*"
@@ -23,5 +22,7 @@
     Referrer-Policy = "strict-origin-when-cross-origin"
 
 [dev]
-  framework = "#auto"
+  command = "npm start"
+  port = 4200
   targetPort = 4200
+  publish = "dist"

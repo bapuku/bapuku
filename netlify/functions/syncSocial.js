@@ -1,168 +1,87 @@
 const { Octokit } = require("@octokit/rest");
+const axios = require("axios");
 
-// Netlify Function to sync social media posts
+// Helper: commit file to GitHub
+async function commitToGitHub(path, content, message, octokit) {
+  try {
+    const { data: existing } = await octokit.repos.getContent({
+      owner: process.env.GITHUB_OWNER,
+      repo: process.env.GITHUB_REPO,
+      path,
+    });
+    const sha = existing.sha;
+    await octokit.repos.createOrUpdateFileContents({
+      owner: process.env.GITHUB_OWNER,
+      repo: process.env.GITHUB_REPO,
+      path,
+      message,
+      content: Buffer.from(content).toString("base64"),
+      sha,
+    });
+  } catch (e) {
+    // not found -> create
+    await octokit.repos.createOrUpdateFileContents({
+      owner: process.env.GITHUB_OWNER,
+      repo: process.env.GITHUB_REPO,
+      path,
+      message,
+      content: Buffer.from(content).toString("base64"),
+    });
+  }
+}
+
 exports.handler = async (event, context) => {
-  // Only allow POST requests
-  if (event.httpMethod !== 'POST') {
+  if (event.httpMethod !== "POST") {
     return {
       statusCode: 405,
-      headers: {
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Headers': 'Content-Type',
-        'Access-Control-Allow-Methods': 'POST, OPTIONS'
-      },
-      body: JSON.stringify({ error: 'Method not allowed' })
+      body: JSON.stringify({ error: "Method not allowed" })
     };
   }
 
-  // Handle CORS preflight
-  if (event.httpMethod === 'OPTIONS') {
-    return {
-      statusCode: 200,
-      headers: {
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Headers': 'Content-Type',
-        'Access-Control-Allow-Methods': 'POST, OPTIONS'
-      },
-      body: ''
-    };
-  }
+  const octokit = new Octokit({ auth: process.env.GITHUB_TOKEN });
+  const requestBody = JSON.parse(event.body || "{}");
 
   try {
-    const octokit = new Octokit({ 
-      auth: process.env.GITHUB_TOKEN 
-    });
-
-    const requestBody = event.body ? JSON.parse(event.body) : {};
-
-    // Helper function to commit file to GitHub
-    async function commitToGitHub(path, content, message) {
-      try {
-        // Try to get existing file
-        const { data: existing } = await octokit.repos.getContent({
-          owner: process.env.GITHUB_OWNER || 'bapuku',
-          repo: process.env.GITHUB_REPO || 'bapuku',
-          path,
-        });
-        
-        // Update existing file
-        await octokit.repos.createOrUpdateFileContents({
-          owner: process.env.GITHUB_OWNER || 'bapuku',
-          repo: process.env.GITHUB_REPO || 'bapuku',
-          path,
-          message,
-          content: Buffer.from(content).toString("base64"),
-          sha: existing.sha,
-        });
-      } catch (e) {
-        // File doesn't exist, create new
-        await octokit.repos.createOrUpdateFileContents({
-          owner: process.env.GITHUB_OWNER || 'bapuku',
-          repo: process.env.GITHUB_REPO || 'bapuku',
-          path,
-          message,
-          content: Buffer.from(content).toString("base64"),
-        });
-      }
-    }
-
-    let syncedPosts = [];
-
-    // 1) Sync X/Twitter posts
+    // 1) X/Twitter recent tweets by username
     if (process.env.TWITTER_BEARER) {
-      try {
-        const twitterUser = requestBody.twitter_username || "MoohTeiDjouaka";
-        
-        // Get user ID
-        const userResponse = await fetch(`https://api.twitter.com/2/users/by/username/${twitterUser}`, {
-          headers: { Authorization: `Bearer ${process.env.TWITTER_BEARER}` }
-        });
-        const userData = await userResponse.json();
-        
-        if (userData.data) {
-          const userId = userData.data.id;
-          
-          // Get recent tweets
-          const tweetsResponse = await fetch(
-            `https://api.twitter.com/2/users/${userId}/tweets?max_results=5&tweet.fields=created_at,text`, 
-            {
-              headers: { Authorization: `Bearer ${process.env.TWITTER_BEARER}` }
-            }
-          );
-          const tweetsData = await tweetsResponse.json();
-          
-          if (tweetsData.data) {
-            for (const tweet of tweetsData.data) {
-              const slug = `x-${tweet.id}.md`;
-              const markdown = `---
-title: "Post X ${tweet.id}"
-date: "${tweet.created_at}"
-source: "x"
-author: "Alex Gustave Azebaze"
----
-
-${tweet.text}`;
-              
-              await commitToGitHub(`content/editos/${slug}`, markdown, `Sync X post ${tweet.id}`);
-              syncedPosts.push({ platform: 'X', id: tweet.id });
-            }
-          }
-        }
-      } catch (error) {
-        console.error('Twitter sync error:', error);
+      const twitterUser = requestBody?.twitter_username || "MoohTeiDjouaka";
+      const twResp = await axios.get(`https://api.twitter.com/2/users/by/username/${twitterUser}`, {
+        headers: { Authorization: `Bearer ${process.env.TWITTER_BEARER}` },
+      });
+      const userId = twResp.data.data.id;
+      const tweets = await axios.get(`https://api.twitter.com/2/users/${userId}/tweets?max_results=5&tweet.fields=created_at,text`, {
+        headers: { Authorization: `Bearer ${process.env.TWITTER_BEARER}` },
+      });
+      for (const t of tweets.data.data || []) {
+        const slug = `x-${t.id}.md`;
+        const md = `---\ntitle: "Post X ${t.id}"\ndate: "${t.created_at}"\nsource: "x"\n---\n\n${t.text}`;
+        await commitToGitHub(`content/editos/${slug}`, md, `Sync X post ${t.id}`, octokit);
       }
     }
 
-    // 2) Sync Instagram posts
+    // 2) Instagram recent posts
     if (process.env.INSTAGRAM_TOKEN) {
-      try {
-        const instagramUserId = requestBody.instagram_user_id;
-        const igUrl = instagramUserId
-          ? `https://graph.instagram.com/${instagramUserId}/media?access_token=${process.env.INSTAGRAM_TOKEN}&fields=id,caption,timestamp,media_url`
-          : `https://graph.instagram.com/me/media?access_token=${process.env.INSTAGRAM_TOKEN}&fields=id,caption,timestamp,media_url`;
-        
-        const igResponse = await fetch(igUrl);
-        const igData = await igResponse.json();
-        
-        if (igData.data) {
-          for (const post of igData.data.slice(0, 5)) { // Limit to 5 recent posts
-            const slug = `ig-${post.id}.md`;
-            const markdown = `---
-title: "Instagram ${post.id}"
-date: "${post.timestamp}"
-source: "instagram"
-author: "Alex Gustave Azebaze"
----
-
-${post.caption || ""}
-
-${post.media_url ? `![Instagram Post](${post.media_url})` : ""}`;
-            
-            await commitToGitHub(`content/editos/${slug}`, markdown, `Sync IG post ${post.id}`);
-            syncedPosts.push({ platform: 'Instagram', id: post.id });
-          }
-        }
-      } catch (error) {
-        console.error('Instagram sync error:', error);
+      const igUserId = requestBody?.instagram_user_id;
+      const igUrl = igUserId
+        ? `https://graph.instagram.com/${igUserId}/media?access_token=${process.env.INSTAGRAM_TOKEN}&fields=id,caption,timestamp,media_url`
+        : `https://graph.instagram.com/me/media?access_token=${process.env.INSTAGRAM_TOKEN}&fields=id,caption,timestamp,media_url`;
+      const igResp = await axios.get(igUrl);
+      for (const p of igResp.data.data || []) {
+        const slug = `ig-${p.id}.md`;
+        const md = `---\ntitle: "Instagram ${p.id}"\ndate: "${p.timestamp}"\nsource: "instagram"\n---\n\n${p.caption || ""}\n\n![](${p.media_url})`;
+        await commitToGitHub(`content/editos/${slug}`, md, `Sync IG post ${p.id}`, octokit);
       }
     }
 
     return {
       statusCode: 200,
-      headers: { 'Access-Control-Allow-Origin': '*' },
-      body: JSON.stringify({ 
-        success: true, 
-        message: 'Social media sync completed',
-        synced: syncedPosts 
-      })
+      body: JSON.stringify({ ok: true })
     };
-
-  } catch (error) {
-    console.error('Sync error:', error);
+  } catch (err) {
+    console.error(err.response?.data || err.message || err);
     return {
       statusCode: 500,
-      headers: { 'Access-Control-Allow-Origin': '*' },
-      body: JSON.stringify({ error: error.message })
+      body: JSON.stringify({ error: err.message })
     };
   }
 };

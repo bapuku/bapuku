@@ -1,99 +1,69 @@
 const { Octokit } = require("@octokit/rest");
+const axios = require("axios");
 
-// Netlify Function to publish reports to GitHub
+// Helper: commit file to GitHub
+async function commitToGitHub(path, content, message, octokit) {
+  try {
+    const { data: existing } = await octokit.repos.getContent({
+      owner: process.env.GITHUB_OWNER,
+      repo: process.env.GITHUB_REPO,
+      path,
+    });
+    const sha = existing.sha;
+    await octokit.repos.createOrUpdateFileContents({
+      owner: process.env.GITHUB_OWNER,
+      repo: process.env.GITHUB_REPO,
+      path,
+      message,
+      content: Buffer.from(content).toString("base64"),
+      sha,
+    });
+  } catch (e) {
+    // not found -> create
+    await octokit.repos.createOrUpdateFileContents({
+      owner: process.env.GITHUB_OWNER,
+      repo: process.env.GITHUB_REPO,
+      path,
+      message,
+      content: Buffer.from(content).toString("base64"),
+    });
+  }
+}
+
 exports.handler = async (event, context) => {
-  // Only allow POST requests
-  if (event.httpMethod !== 'POST') {
+  if (event.httpMethod !== "POST") {
     return {
       statusCode: 405,
-      headers: {
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Headers': 'Content-Type',
-        'Access-Control-Allow-Methods': 'POST, OPTIONS'
-      },
-      body: JSON.stringify({ error: 'Method not allowed' })
+      body: JSON.stringify({ error: "Method not allowed" })
     };
   }
 
-  // Handle CORS preflight
-  if (event.httpMethod === 'OPTIONS') {
+  const { files } = JSON.parse(event.body);
+  if (!files || !Array.isArray(files)) {
     return {
-      statusCode: 200,
-      headers: {
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Headers': 'Content-Type',
-        'Access-Control-Allow-Methods': 'POST, OPTIONS'
-      },
-      body: ''
+      statusCode: 400,
+      body: JSON.stringify({ error: "files array required" })
     };
   }
+
+  const octokit = new Octokit({ auth: process.env.GITHUB_TOKEN });
 
   try {
-    const { files } = JSON.parse(event.body);
+    for (const f of files) {
+      const r = await axios.get(f.url, { responseType: "arraybuffer" });
+      const path = `content/reports/${f.name}`;
+      await commitToGitHub(path, r.data, `Add report ${f.name}`, octokit);
+    }
     
-    if (!files || !Array.isArray(files)) {
-      return {
-        statusCode: 400,
-        headers: { 'Access-Control-Allow-Origin': '*' },
-        body: JSON.stringify({ error: 'files array required' })
-      };
-    }
-
-    const octokit = new Octokit({ 
-      auth: process.env.GITHUB_TOKEN 
-    });
-
-    // Helper function to commit file to GitHub
-    async function commitToGitHub(path, content, message) {
-      try {
-        // Try to get existing file
-        const { data: existing } = await octokit.repos.getContent({
-          owner: process.env.GITHUB_OWNER || 'bapuku',
-          repo: process.env.GITHUB_REPO || 'bapuku',
-          path,
-        });
-        
-        // Update existing file
-        await octokit.repos.createOrUpdateFileContents({
-          owner: process.env.GITHUB_OWNER || 'bapuku',
-          repo: process.env.GITHUB_REPO || 'bapuku',
-          path,
-          message,
-          content: Buffer.from(content).toString("base64"),
-          sha: existing.sha,
-        });
-      } catch (e) {
-        // File doesn't exist, create new
-        await octokit.repos.createOrUpdateFileContents({
-          owner: process.env.GITHUB_OWNER || 'bapuku',
-          repo: process.env.GITHUB_REPO || 'bapuku',
-          path,
-          message,
-          content: Buffer.from(content).toString("base64"),
-        });
-      }
-    }
-
-    // Process each file
-    for (const file of files) {
-      const response = await fetch(file.url);
-      const arrayBuffer = await response.arrayBuffer();
-      const path = `content/reports/${file.name}`;
-      await commitToGitHub(path, arrayBuffer, `Add report ${file.name}`);
-    }
-
     return {
       statusCode: 200,
-      headers: { 'Access-Control-Allow-Origin': '*' },
-      body: JSON.stringify({ success: true, message: 'Reports published successfully' })
+      body: JSON.stringify({ ok: true })
     };
-
-  } catch (error) {
-    console.error('Error:', error);
+  } catch (err) {
+    console.error(err);
     return {
       statusCode: 500,
-      headers: { 'Access-Control-Allow-Origin': '*' },
-      body: JSON.stringify({ error: error.message })
+      body: JSON.stringify({ error: err.message })
     };
   }
 };
