@@ -17,8 +17,8 @@ jobs:
           node-version: 18
       - name: Install dependencies
         run: |
-          npm ci
-          cd netlify/functions && npm ci
+          npm install
+          cd netlify/functions && npm install
       - name: Build Angular
         run: npm run build
       - name: Deploy to Netlify
