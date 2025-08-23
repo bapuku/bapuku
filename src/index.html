@@ -1,14 +1,163 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="fr">
 <head>
-  <meta charset="utf-8">
-  <title>AGA MEDIA INC - #AGAInfoDAILY</title>
-  <base href="/">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <meta name="description" content="Intelligence média & électorale au service de la décision. 30 ans de journalisme politique et technologies d'IA pour analyser l'actualité africaine.">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AGA MEDIA INC - Alex Gustave Azebaze</title>
+    <meta name="description" content="AGA MEDIA INC - Analyse politique, conseil stratégique et communication par Alex Gustave Azebaze">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
 </head>
-<body class="bg-neutral-950 text-neutral-100">
-  <app-root></app-root>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-blue-900 text-white shadow-lg">
+        <div class="container mx-auto px-4 py-6">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-4">
+                    <img src="assets/img/1.png" alt="AGA MEDIA" class="w-12 h-12 rounded-full">
+                    <div>
+                        <h1 class="text-2xl font-bold">AGA MEDIA INC</h1>
+                        <p class="text-blue-200">Alex Gustave Azebaze</p>
+                    </div>
+                </div>
+                <nav class="hidden md:flex space-x-6">
+                    <a href="#accueil" class="hover:text-blue-200 transition-colors">Accueil</a>
+                    <a href="#services" class="hover:text-blue-200 transition-colors">Services</a>
+                    <a href="#rapports" class="hover:text-blue-200 transition-colors">Rapports</a>
+                    <a href="#contact" class="hover:text-blue-200 transition-colors">Contact</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="accueil" class="bg-gradient-to-r from-blue-900 to-blue-700 text-white py-20">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-5xl font-bold mb-6">Expertise Politique & Communication</h2>
+            <p class="text-xl mb-8 max-w-3xl mx-auto">
+                AGA MEDIA INC offre des analyses politiques approfondies, du conseil stratégique 
+                et des solutions de communication pour naviguer dans le paysage politique camerounais.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <button class="bg-white text-blue-900 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
+                    Nos Services
+                </button>
+                <button class="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-900 transition-colors">
+                    Derniers Rapports
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center text-gray-800 mb-12">Nos Services</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="text-center p-6 bg-gray-50 rounded-lg hover:shadow-lg transition-shadow">
+                    <img src="assets/img/2.png" alt="Analyse Politique" class="w-16 h-16 mx-auto mb-4 rounded-full">
+                    <h3 class="text-xl font-semibold mb-3 text-gray-800">Analyse Politique</h3>
+                    <p class="text-gray-600">Analyses approfondies du paysage politique camerounais et des tendances électorales.</p>
+                </div>
+                <div class="text-center p-6 bg-gray-50 rounded-lg hover:shadow-lg transition-shadow">
+                    <img src="assets/img/3.png" alt="Conseil Stratégique" class="w-16 h-16 mx-auto mb-4 rounded-full">
+                    <h3 class="text-xl font-semibold mb-3 text-gray-800">Conseil Stratégique</h3>
+                    <p class="text-gray-600">Accompagnement stratégique pour les acteurs politiques et institutionnels.</p>
+                </div>
+                <div class="text-center p-6 bg-gray-50 rounded-lg hover:shadow-lg transition-shadow">
+                    <img src="assets/img/4.png" alt="Communication" class="w-16 h-16 mx-auto mb-4 rounded-full">
+                    <h3 class="text-xl font-semibold mb-3 text-gray-800">Communication</h3>
+                    <p class="text-gray-600">Stratégies de communication politique et gestion de l'image publique.</p>
+                </div>
+                <div class="text-center p-6 bg-gray-50 rounded-lg hover:shadow-lg transition-shadow">
+                    <img src="assets/img/5.png" alt="Formation" class="w-16 h-16 mx-auto mb-4 rounded-full">
+                    <h3 class="text-xl font-semibold mb-3 text-gray-800">Formation</h3>
+                    <p class="text-gray-600">Formation en communication politique et analyse des enjeux démocratiques.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reports Section -->
+    <section id="rapports" class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center text-gray-800 mb-12">Derniers Rapports</h2>
+            <div id="reports-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Reports will be loaded dynamically -->
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-semibold mb-3">Prévisions Électorales 2025</h3>
+                    <p class="text-gray-600 mb-4">Analyse complète des tendances et projections pour les élections camerounaises de 2025.</p>
+                    <button class="text-blue-600 hover:text-blue-800 font-semibold">Lire le rapport →</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 bg-blue-900 text-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-12">Contactez-nous</h2>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <div>
+                    <h3 class="text-2xl font-semibold mb-6">Informations de Contact</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-center space-x-3">
+                            <span class="text-blue-300">📧</span>
+                            <span>contact@agamedia.com</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <span class="text-blue-300">📱</span>
+                            <span>+237 XXX XXX XXX</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <span class="text-blue-300">📍</span>
+                            <span>Yaoundé, Cameroun</span>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8">
+                        <h4 class="text-xl font-semibold mb-4">Suivez-nous</h4>
+                        <div class="flex space-x-4">
+                            <a href="#" class="text-blue-300 hover:text-white transition-colors">Facebook</a>
+                            <a href="#" class="text-blue-300 hover:text-white transition-colors">Twitter</a>
+                            <a href="#" class="text-blue-300 hover:text-white transition-colors">LinkedIn</a>
+                            <a href="#" class="text-blue-300 hover:text-white transition-colors">YouTube</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-2xl font-semibold mb-6">Envoyez-nous un message</h3>
+                    <form id="contact-form" class="space-y-4">
+                        <div>
+                            <input type="text" id="name" name="name" placeholder="Votre nom" required
+                                   class="w-full px-4 py-3 bg-white text-gray-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-300">
+                        </div>
+                        <div>
+                            <input type="email" id="email" name="email" placeholder="Votre email" required
+                                   class="w-full px-4 py-3 bg-white text-gray-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-300">
+                        </div>
+                        <div>
+                            <textarea id="message" name="message" rows="5" placeholder="Votre message" required
+                                      class="w-full px-4 py-3 bg-white text-gray-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-300"></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-white text-blue-900 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
+                            Envoyer le message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-4 text-center">
+            <p>&copy; 2025 AGA MEDIA INC - Alex Gustave Azebaze. Tous droits réservés.</p>
+            <p class="text-gray-400 mt-2">Expertise politique et communication au Cameroun</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>

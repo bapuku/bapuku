@@ -1,6 +1,6 @@
 [build]
-  publish = "dist"
-  command = "npm run build"
+  publish = "src"
+  command = "mkdir -p src/assets && cp -r IMAGES/* src/assets/img/ 2>/dev/null || true"
   functions = "netlify/functions"
 
 [build.environment]
@@ -23,3 +23,13 @@
   for = "/assets/*"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "*.js"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"
+
+[[headers]]
+  for = "*.css"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"
