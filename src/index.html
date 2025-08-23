@@ -3,145 +3,471 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AGA MEDIA INC - Alex Gustave Azebaze</title>
-    <meta name="description" content="AGA MEDIA INC - Analyse politique, conseil stratégique et communication par Alex Gustave Azebaze">
+    <title>AGA MEDIA INC - Alex Gustave Azebaze | Expert en Analyse Politique Africaine</title>
+    <meta name="description" content="AGA MEDIA INC - 30 ans d'expertise en journalisme politique, analyse électorale et intelligence artificielle. Spécialiste des élections africaines avec Alex Gustave Azebaze.">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body class="bg-gray-50">
-    <!-- Header -->
-    <header class="bg-blue-900 text-white shadow-lg">
-        <div class="container mx-auto px-4 py-6">
-            <div class="flex items-center justify-between">
-                <div class="flex items-center space-x-4">
-                    <img src="assets/img/1.png" alt="AGA MEDIA" class="w-12 h-12 rounded-full">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg fixed w-full top-0 z-50">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center space-x-3">
+                    <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=50&h=50&fit=crop&crop=face" 
+                         alt="Alex Gustave Azebaze" class="w-12 h-12 rounded-full object-cover">
                     <div>
-                        <h1 class="text-2xl font-bold">AGA MEDIA INC</h1>
-                        <p class="text-blue-200">Alex Gustave Azebaze</p>
+                        <h1 class="text-xl font-bold text-gray-800">AGA MEDIA INC</h1>
+                        <p class="text-sm text-gray-600">Alex Gustave Azebaze</p>
                     </div>
                 </div>
-                <nav class="hidden md:flex space-x-6">
-                    <a href="#accueil" class="hover:text-blue-200 transition-colors">Accueil</a>
-                    <a href="#services" class="hover:text-blue-200 transition-colors">Services</a>
-                    <a href="#rapports" class="hover:text-blue-200 transition-colors">Rapports</a>
-                    <a href="#contact" class="hover:text-blue-200 transition-colors">Contact</a>
-                </nav>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex space-x-8">
+                    <a href="#accueil" class="text-gray-700 hover:text-blue-600 transition-colors">Accueil</a>
+                    <a href="#services" class="text-gray-700 hover:text-blue-600 transition-colors">Services</a>
+                    <a href="#rapports" class="text-gray-700 hover:text-blue-600 transition-colors">Rapports</a>
+                    <a href="#actualites" class="text-gray-700 hover:text-blue-600 transition-colors">Actualités</a>
+                    <a href="#contact" class="text-gray-700 hover:text-blue-600 transition-colors">Contact</a>
+                </div>
+                
+                <!-- Social Media Links -->
+                <div class="hidden md:flex space-x-4">
+                    <a href="https://x.com/MoohTeiDjouaka" target="_blank" class="text-gray-600 hover:text-blue-600">
+                        <i class="fab fa-twitter text-xl"></i>
+                    </a>
+                    <a href="https://facebook.com/alexgustave" target="_blank" class="text-gray-600 hover:text-blue-600">
+                        <i class="fab fa-facebook text-xl"></i>
+                    </a>
+                    <a href="https://instagram.com/agazebaze" target="_blank" class="text-gray-600 hover:text-blue-600">
+                        <i class="fab fa-instagram text-xl"></i>
+                    </a>
+                    <a href="https://linkedin.com/in/alex-gustave" target="_blank" class="text-gray-600 hover:text-blue-600">
+                        <i class="fab fa-linkedin text-xl"></i>
+                    </a>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="md:hidden text-gray-700">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+            
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="hidden md:hidden pb-4">
+                <a href="#accueil" class="block py-2 text-gray-700 hover:text-blue-600">Accueil</a>
+                <a href="#services" class="block py-2 text-gray-700 hover:text-blue-600">Services</a>
+                <a href="#rapports" class="block py-2 text-gray-700 hover:text-blue-600">Rapports</a>
+                <a href="#actualites" class="block py-2 text-gray-700 hover:text-blue-600">Actualités</a>
+                <a href="#contact" class="block py-2 text-gray-700 hover:text-blue-600">Contact</a>
+                <div class="flex space-x-4 mt-4">
+                    <a href="https://x.com/MoohTeiDjouaka" target="_blank" class="text-gray-600 hover:text-blue-600">
+                        <i class="fab fa-twitter text-xl"></i>
+                    </a>
+                    <a href="https://facebook.com/alexgustave" target="_blank" class="text-gray-600 hover:text-blue-600">
+                        <i class="fab fa-facebook text-xl"></i>
+                    </a>
+                    <a href="https://instagram.com/agazebaze" target="_blank" class="text-gray-600 hover:text-blue-600">
+                        <i class="fab fa-instagram text-xl"></i>
+                    </a>
+                    <a href="https://linkedin.com/in/alex-gustave" target="_blank" class="text-gray-600 hover:text-blue-600">
+                        <i class="fab fa-linkedin text-xl"></i>
+                    </a>
+                </div>
             </div>
         </div>
-    </header>
+    </nav>
 
     <!-- Hero Section -->
-    <section id="accueil" class="bg-gradient-to-r from-blue-900 to-blue-700 text-white py-20">
-        <div class="container mx-auto px-4 text-center">
-            <h2 class="text-5xl font-bold mb-6">Expertise Politique & Communication</h2>
-            <p class="text-xl mb-8 max-w-3xl mx-auto">
-                AGA MEDIA INC offre des analyses politiques approfondies, du conseil stratégique 
-                et des solutions de communication pour naviguer dans le paysage politique camerounais.
-            </p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <button class="bg-white text-blue-900 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
-                    Nos Services
-                </button>
-                <button class="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-900 transition-colors">
-                    Derniers Rapports
-                </button>
+    <section id="accueil" class="bg-gradient-to-r from-blue-900 to-indigo-800 text-white pt-24 pb-20">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="text-5xl font-bold mb-6 leading-tight">
+                        Expert en <span class="text-yellow-400">Analyse Politique</span> 
+                        & Électorale Africaine
+                    </h2>
+                    <p class="text-xl mb-8 text-gray-200">
+                        30 ans d'expérience en journalisme politique avec l'intégration de technologies 
+                        critiques, notamment l'intelligence artificielle, pour analyser l'actualité africaine.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="#services" class="bg-yellow-400 text-black px-8 py-3 rounded-lg font-semibold hover:bg-yellow-300 transition-all duration-300 text-center">
+                            Découvrir nos Services
+                        </a>
+                        <a href="#rapports" class="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-900 transition-all duration-300 text-center">
+                            Consulter nos Rapports
+                        </a>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&h=600&fit=crop&crop=face" 
+                         alt="Alex Gustave Azebaze - Expert politique" 
+                         class="w-80 h-96 object-cover rounded-lg shadow-2xl mx-auto">
+                    <div class="mt-6 bg-white bg-opacity-10 backdrop-blur-lg rounded-lg p-4">
+                        <p class="text-lg font-semibold">Alex Gustave Azebaze</p>
+                        <p class="text-gray-300">Journaliste Politique Senior • Analyste Électoral</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Services Section -->
-    <section id="services" class="py-16 bg-white">
+    <section id="services" class="py-20 bg-white">
         <div class="container mx-auto px-4">
-            <h2 class="text-4xl font-bold text-center text-gray-800 mb-12">Nos Services</h2>
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">Nos Expertises</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Plus de 30 ans d'expérience au service de l'analyse politique et de l'information stratégique en Afrique
+                </p>
+            </div>
+            
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <div class="text-center p-6 bg-gray-50 rounded-lg hover:shadow-lg transition-shadow">
-                    <img src="assets/img/2.png" alt="Analyse Politique" class="w-16 h-16 mx-auto mb-4 rounded-full">
-                    <h3 class="text-xl font-semibold mb-3 text-gray-800">Analyse Politique</h3>
-                    <p class="text-gray-600">Analyses approfondies du paysage politique camerounais et des tendances électorales.</p>
+                <div class="bg-gray-50 p-8 rounded-xl hover:shadow-xl transition-all duration-300 text-center">
+                    <div class="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-chart-line text-blue-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4 text-gray-800">Analyse de l'Information</h3>
+                    <p class="text-gray-600">Analyse politique, économique et stratégique de l'actualité africaine avec l'appui de l'intelligence artificielle</p>
                 </div>
-                <div class="text-center p-6 bg-gray-50 rounded-lg hover:shadow-lg transition-shadow">
-                    <img src="assets/img/3.png" alt="Conseil Stratégique" class="w-16 h-16 mx-auto mb-4 rounded-full">
-                    <h3 class="text-xl font-semibold mb-3 text-gray-800">Conseil Stratégique</h3>
-                    <p class="text-gray-600">Accompagnement stratégique pour les acteurs politiques et institutionnels.</p>
+                
+                <div class="bg-gray-50 p-8 rounded-xl hover:shadow-xl transition-all duration-300 text-center">
+                    <div class="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-vote-yea text-green-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4 text-gray-800">Analyse Électorale</h3>
+                    <p class="text-gray-600">Études approfondies des processus électoraux, tendances et projections pour les élections africaines</p>
                 </div>
-                <div class="text-center p-6 bg-gray-50 rounded-lg hover:shadow-lg transition-shadow">
-                    <img src="assets/img/4.png" alt="Communication" class="w-16 h-16 mx-auto mb-4 rounded-full">
-                    <h3 class="text-xl font-semibold mb-3 text-gray-800">Communication</h3>
-                    <p class="text-gray-600">Stratégies de communication politique et gestion de l'image publique.</p>
+                
+                <div class="bg-gray-50 p-8 rounded-xl hover:shadow-xl transition-all duration-300 text-center">
+                    <div class="bg-purple-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-broadcast-tower text-purple-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4 text-gray-800">Production de Contenus</h3>
+                    <p class="text-gray-600">Création de contenus médiatiques professionnels pour l'information politique et stratégique</p>
                 </div>
-                <div class="text-center p-6 bg-gray-50 rounded-lg hover:shadow-lg transition-shadow">
-                    <img src="assets/img/5.png" alt="Formation" class="w-16 h-16 mx-auto mb-4 rounded-full">
-                    <h3 class="text-xl font-semibold mb-3 text-gray-800">Formation</h3>
-                    <p class="text-gray-600">Formation en communication politique et analyse des enjeux démocratiques.</p>
+                
+                <div class="bg-gray-50 p-8 rounded-xl hover:shadow-xl transition-all duration-300 text-center">
+                    <div class="bg-orange-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-handshake text-orange-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4 text-gray-800">Consultance Politique</h3>
+                    <p class="text-gray-600">Conseil stratégique pour les acteurs politiques, institutions et organisations</p>
+                </div>
+            </div>
+            
+            <!-- Differentiators -->
+            <div class="mt-16 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl p-8">
+                <div class="text-center mb-8">
+                    <h3 class="text-3xl font-bold text-gray-800 mb-4">💡 Ce qui nous différencie</h3>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="flex items-center space-x-4">
+                        <div class="bg-blue-600 w-12 h-12 rounded-full flex items-center justify-center">
+                            <i class="fas fa-history text-white text-xl"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-semibold text-gray-800">30 ans d'expérience</h4>
+                            <p class="text-gray-600">Trois décennies dans le journalisme politique africain</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-4">
+                        <div class="bg-purple-600 w-12 h-12 rounded-full flex items-center justify-center">
+                            <i class="fas fa-robot text-white text-xl"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-semibold text-gray-800">Intelligence Artificielle</h4>
+                            <p class="text-gray-600">Intégration de technologies critiques pour l'analyse</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Reports Section -->
-    <section id="rapports" class="py-16 bg-gray-100">
+    <section id="rapports" class="py-20 bg-gray-100">
         <div class="container mx-auto px-4">
-            <h2 class="text-4xl font-bold text-center text-gray-800 mb-12">Derniers Rapports</h2>
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">Rapports & Analyses</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Nos dernières analyses et rapports sur la situation politique en Afrique
+                </p>
+            </div>
+            
             <div id="reports-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Reports will be loaded dynamically -->
-                <div class="bg-white p-6 rounded-lg shadow-md">
-                    <h3 class="text-xl font-semibold mb-3">Prévisions Électorales 2025</h3>
-                    <p class="text-gray-600 mb-4">Analyse complète des tendances et projections pour les élections camerounaises de 2025.</p>
-                    <button class="text-blue-600 hover:text-blue-800 font-semibold">Lire le rapport →</button>
+                <!-- Featured Reports -->
+                <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
+                    <div class="mb-4">
+                        <img src="https://images.unsplash.com/photo-1541872718-3c1b998d0974?w=400&h=200&fit=crop" 
+                             alt="Élections Cameroun 2025" class="w-full h-48 object-cover rounded-lg">
+                    </div>
+                    <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-3 py-1 rounded-full">Analyse Électorale</span>
+                    <h3 class="text-xl font-semibold mt-4 mb-3">Prévisions Électorales Cameroun 2025</h3>
+                    <p class="text-gray-600 mb-4">Analyse complète des tendances et projections pour les élections camerounaises de 2025, incluant l'impact des nouvelles technologies.</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-sm text-gray-500">Publié le 15 août 2025</span>
+                        <a href="#" class="text-blue-600 hover:text-blue-800 font-semibold flex items-center">
+                            Lire <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
+                    <div class="mb-4">
+                        <img src="https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?w=400&h=200&fit=crop" 
+                             alt="Politique Africaine" class="w-full h-48 object-cover rounded-lg">
+                    </div>
+                    <span class="bg-green-100 text-green-800 text-xs font-semibold px-3 py-1 rounded-full">Géopolitique</span>
+                    <h3 class="text-xl font-semibold mt-4 mb-3">L'Évolution Politique Post-Conseil Constitutionnel</h3>
+                    <p class="text-gray-600 mb-4">Impact des décisions du Conseil Constitutionnel sur le paysage politique camerounais et les stratégies des acteurs politiques.</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-sm text-gray-500">Publié le 10 août 2025</span>
+                        <a href="#" class="text-blue-600 hover:text-blue-800 font-semibold flex items-center">
+                            Lire <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
+                    <div class="mb-4">
+                        <img src="https://images.unsplash.com/photo-1586473219010-2ffc57b0d282?w=400&h=200&fit=crop" 
+                             alt="Luttes de Pouvoir" class="w-full h-48 object-cover rounded-lg">
+                    </div>
+                    <span class="bg-purple-100 text-purple-800 text-xs font-semibold px-3 py-1 rounded-full">Stratégie</span>
+                    <h3 class="text-xl font-semibold mt-4 mb-3">Luttes de Pouvoir : Analyse des Réseaux</h3>
+                    <p class="text-gray-600 mb-4">Décryptage des réseaux de pouvoir et des candidatures pour comprendre les enjeux stratégiques actuels.</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-sm text-gray-500">Publié le 5 août 2025</span>
+                        <a href="#" class="text-blue-600 hover:text-blue-800 font-semibold flex items-center">
+                            Lire <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="rapports.html" class="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors">
+                    Voir tous les rapports
+                </a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- News/Actualités Section -->
+    <section id="actualites" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">Actualités Politiques</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Les dernières analyses de l'actualité politique africaine
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <!-- Main Article -->
+                <div class="space-y-6">
+                    <img src="https://images.unsplash.com/photo-1606835698500-2adfe4b76715?w=600&h=400&fit=crop" 
+                         alt="Élections Afrique" class="w-full h-64 object-cover rounded-xl">
+                    <div>
+                        <span class="bg-red-100 text-red-800 text-sm font-semibold px-3 py-1 rounded-full">En Direct</span>
+                        <h3 class="text-2xl font-bold mt-4 mb-3">Les Enjeux des Élections Africaines 2025</h3>
+                        <p class="text-gray-600 mb-4">
+                            Une analyse approfondie des défis et opportunités qui marquent les processus électoraux 
+                            en cours sur le continent africain, avec un focus particulier sur l'impact des nouvelles technologies.
+                        </p>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-4">
+                                <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=40&h=40&fit=crop&crop=face" 
+                                     alt="Alex Gustave" class="w-10 h-10 rounded-full">
+                                <div>
+                                    <p class="font-semibold text-gray-800">Alex Gustave Azebaze</p>
+                                    <p class="text-sm text-gray-500">Il y a 2 heures</p>
+                                </div>
+                            </div>
+                            <a href="#" class="text-blue-600 hover:text-blue-800 font-semibold">Lire l'article</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Side Articles -->
+                <div class="space-y-6">
+                    <div class="flex space-x-4 p-4 bg-gray-50 rounded-lg hover:shadow-md transition-shadow">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&h=100&fit=crop" 
+                             alt="Politique UPC" class="w-24 h-16 object-cover rounded">
+                        <div class="flex-1">
+                            <h4 class="font-semibold text-gray-800 mb-2">"On peut aussi être un élu par nomination. C'est le cas de l'UPC"</h4>
+                            <p class="text-sm text-gray-600">Alex Gustave Zebaze analyse les mécanismes de nomination...</p>
+                            <span class="text-xs text-gray-500">Il y a 4 heures</span>
+                        </div>
+                    </div>
+                    
+                    <div class="flex space-x-4 p-4 bg-gray-50 rounded-lg hover:shadow-md transition-shadow">
+                        <img src="https://images.unsplash.com/photo-1591604466107-ec97de577aff?w=150&h=100&fit=crop" 
+                             alt="Communication gouvernementale" class="w-24 h-16 object-cover rounded">
+                        <div class="flex-1">
+                            <h4 class="font-semibold text-gray-800 mb-2">Communication gouvernementale sur la situation actuelle</h4>
+                            <p class="text-sm text-gray-600">Analyse des stratégies de communication du gouvernement...</p>
+                            <span class="text-xs text-gray-500">Il y a 6 heures</span>
+                        </div>
+                    </div>
+                    
+                    <div class="flex space-x-4 p-4 bg-gray-50 rounded-lg hover:shadow-md transition-shadow">
+                        <img src="https://images.unsplash.com/photo-1594736797933-d0bea2c6bf38?w=150&h=100&fit=crop" 
+                             alt="Réseaux du pouvoir" class="w-24 h-16 object-cover rounded">
+                        <div class="flex-1">
+                            <h4 class="font-semibold text-gray-800 mb-2">Les réseaux du pouvoir et les candidatures</h4>
+                            <p class="text-sm text-gray-600">Décryptage des mécanismes de pouvoir et des candidatures...</p>
+                            <span class="text-xs text-gray-500">Il y a 1 jour</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="py-16 bg-blue-900 text-white">
+    <section id="contact" class="py-20 bg-gradient-to-r from-blue-900 to-indigo-800 text-white">
         <div class="container mx-auto px-4">
-            <h2 class="text-4xl font-bold text-center mb-12">Contactez-nous</h2>
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4">Contactez-nous</h2>
+                <p class="text-xl text-gray-200 max-w-3xl mx-auto">
+                    Prêt à collaborer ? Contactez notre équipe d'experts pour vos besoins en analyse politique et stratégique.
+                </p>
+            </div>
+            
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <!-- Contact Info -->
                 <div>
-                    <h3 class="text-2xl font-semibold mb-6">Informations de Contact</h3>
-                    <div class="space-y-4">
-                        <div class="flex items-center space-x-3">
-                            <span class="text-blue-300">📧</span>
-                            <span>contact@agamedia.com</span>
+                    <h3 class="text-2xl font-semibold mb-8">Informations de Contact</h3>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-center space-x-4">
+                            <div class="bg-white bg-opacity-20 w-12 h-12 rounded-full flex items-center justify-center">
+                                <i class="fas fa-envelope text-white text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold">Email</h4>
+                                <p class="text-gray-200">Utilisez le formulaire ci-contre</p>
+                            </div>
                         </div>
-                        <div class="flex items-center space-x-3">
-                            <span class="text-blue-300">📱</span>
-                            <span>+237 XXX XXX XXX</span>
+                        
+                        <div class="flex items-center space-x-4">
+                            <div class="bg-white bg-opacity-20 w-12 h-12 rounded-full flex items-center justify-center">
+                                <i class="fas fa-map-marker-alt text-white text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold">Localisation</h4>
+                                <p class="text-gray-200">Cameroun & Afrique Centrale</p>
+                            </div>
                         </div>
-                        <div class="flex items-center space-x-3">
-                            <span class="text-blue-300">📍</span>
-                            <span>Yaoundé, Cameroun</span>
+                        
+                        <div class="flex items-center space-x-4">
+                            <div class="bg-white bg-opacity-20 w-12 h-12 rounded-full flex items-center justify-center">
+                                <i class="fas fa-clock text-white text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold">Disponibilité</h4>
+                                <p class="text-gray-200">Lun - Ven: 8h00 - 18h00 (GMT+1)</p>
+                            </div>
                         </div>
                     </div>
                     
-                    <div class="mt-8">
-                        <h4 class="text-xl font-semibold mb-4">Suivez-nous</h4>
-                        <div class="flex space-x-4">
-                            <a href="#" class="text-blue-300 hover:text-white transition-colors">Facebook</a>
-                            <a href="#" class="text-blue-300 hover:text-white transition-colors">Twitter</a>
-                            <a href="#" class="text-blue-300 hover:text-white transition-colors">LinkedIn</a>
-                            <a href="#" class="text-blue-300 hover:text-white transition-colors">YouTube</a>
+                    <!-- Social Media -->
+                    <div class="mt-12">
+                        <h4 class="text-xl font-semibold mb-6">Suivez-nous sur les réseaux sociaux</h4>
+                        <div class="grid grid-cols-2 gap-4">
+                            <a href="https://x.com/MoohTeiDjouaka" target="_blank" 
+                               class="bg-white bg-opacity-20 p-4 rounded-lg hover:bg-opacity-30 transition-all duration-300 flex items-center space-x-3">
+                                <i class="fab fa-twitter text-2xl"></i>
+                                <div>
+                                    <p class="font-semibold">Twitter</p>
+                                    <p class="text-sm text-gray-200">@MoohTeiDjouaka</p>
+                                </div>
+                            </a>
+                            
+                            <a href="https://facebook.com/alexgustave" target="_blank" 
+                               class="bg-white bg-opacity-20 p-4 rounded-lg hover:bg-opacity-30 transition-all duration-300 flex items-center space-x-3">
+                                <i class="fab fa-facebook text-2xl"></i>
+                                <div>
+                                    <p class="font-semibold">Facebook</p>
+                                    <p class="text-sm text-gray-200">Alex Gustave</p>
+                                </div>
+                            </a>
+                            
+                            <a href="https://instagram.com/agazebaze" target="_blank" 
+                               class="bg-white bg-opacity-20 p-4 rounded-lg hover:bg-opacity-30 transition-all duration-300 flex items-center space-x-3">
+                                <i class="fab fa-instagram text-2xl"></i>
+                                <div>
+                                    <p class="font-semibold">Instagram</p>
+                                    <p class="text-sm text-gray-200">@agazebaze</p>
+                                </div>
+                            </a>
+                            
+                            <a href="https://linkedin.com/in/alex-gustave" target="_blank" 
+                               class="bg-white bg-opacity-20 p-4 rounded-lg hover:bg-opacity-30 transition-all duration-300 flex items-center space-x-3">
+                                <i class="fab fa-linkedin text-2xl"></i>
+                                <div>
+                                    <p class="font-semibold">LinkedIn</p>
+                                    <p class="text-sm text-gray-200">Alex Gustave</p>
+                                </div>
+                            </a>
                         </div>
                     </div>
                 </div>
                 
-                <div>
+                <!-- Contact Form -->
+                <div class="bg-white bg-opacity-10 backdrop-blur-lg rounded-xl p-8">
                     <h3 class="text-2xl font-semibold mb-6">Envoyez-nous un message</h3>
-                    <form id="contact-form" class="space-y-4">
-                        <div>
-                            <input type="text" id="name" name="name" placeholder="Votre nom" required
-                                   class="w-full px-4 py-3 bg-white text-gray-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-300">
+                    <form id="contact-form" class="space-y-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="firstName" class="block text-sm font-semibold mb-2">Prénom</label>
+                                <input type="text" id="firstName" name="firstName" required
+                                       class="w-full px-4 py-3 bg-white bg-opacity-20 border border-white border-opacity-30 rounded-lg text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-yellow-400"
+                                       placeholder="Votre prénom">
+                            </div>
+                            <div>
+                                <label for="lastName" class="block text-sm font-semibold mb-2">Nom</label>
+                                <input type="text" id="lastName" name="lastName" required
+                                       class="w-full px-4 py-3 bg-white bg-opacity-20 border border-white border-opacity-30 rounded-lg text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-yellow-400"
+                                       placeholder="Votre nom">
+                            </div>
                         </div>
+                        
                         <div>
-                            <input type="email" id="email" name="email" placeholder="Votre email" required
-                                   class="w-full px-4 py-3 bg-white text-gray-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-300">
+                            <label for="email" class="block text-sm font-semibold mb-2">Email</label>
+                            <input type="email" id="email" name="email" required
+                                   class="w-full px-4 py-3 bg-white bg-opacity-20 border border-white border-opacity-30 rounded-lg text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-yellow-400"
+                                   placeholder="votre.email@exemple.com">
                         </div>
+                        
                         <div>
-                            <textarea id="message" name="message" rows="5" placeholder="Votre message" required
-                                      class="w-full px-4 py-3 bg-white text-gray-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-300"></textarea>
+                            <label for="subject" class="block text-sm font-semibold mb-2">Sujet</label>
+                            <select id="subject" name="subject" required
+                                    class="w-full px-4 py-3 bg-white bg-opacity-20 border border-white border-opacity-30 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-yellow-400">
+                                <option value="">Sélectionnez un sujet</option>
+                                <option value="analyse">Demande d'analyse politique</option>
+                                <option value="consultation">Consultation stratégique</option>
+                                <option value="media">Production de contenu média</option>
+                                <option value="formation">Formation et accompagnement</option>
+                                <option value="partenariat">Opportunité de partenariat</option>
+                                <option value="autre">Autre</option>
+                            </select>
                         </div>
-                        <button type="submit" class="w-full bg-white text-blue-900 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
+                        
+                        <div>
+                            <label for="message" class="block text-sm font-semibold mb-2">Message</label>
+                            <textarea id="message" name="message" rows="5" required
+                                      class="w-full px-4 py-3 bg-white bg-opacity-20 border border-white border-opacity-30 rounded-lg text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-yellow-400"
+                                      placeholder="Décrivez votre projet ou votre demande..."></textarea>
+                        </div>
+                        
+                        <button type="submit" 
+                                class="w-full bg-yellow-400 text-black px-6 py-3 rounded-lg font-semibold hover:bg-yellow-300 transition-colors">
+                            <i class="fas fa-paper-plane mr-2"></i>
                             Envoyer le message
                         </button>
                     </form>
@@ -151,13 +477,81 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-8">
-        <div class="container mx-auto px-4 text-center">
-            <p>&copy; 2025 AGA MEDIA INC - Alex Gustave Azebaze. Tous droits réservés.</p>
-            <p class="text-gray-400 mt-2">Expertise politique et communication au Cameroun</p>
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <!-- Company Info -->
+                <div class="md:col-span-2">
+                    <h3 class="text-2xl font-bold mb-4">AGA MEDIA</h3>
+                    <p class="text-gray-300 mb-6 leading-relaxed">
+                        30 ans d'expérience en journalisme politique. Votre partenaire de confiance pour l'analyse de l'information politique, économique et stratégique en Afrique.
+                    </p>
+                    <div class="flex items-center space-x-2 text-sm text-gray-400">
+                        <i class="fas fa-award text-yellow-400"></i>
+                        <span>Expert reconnu en analyse politique africaine</span>
+                    </div>
+                </div>
+                
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Navigation</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="text-gray-300 hover:text-yellow-400 transition-colors">Accueil</a></li>
+                        <li><a href="#services" class="text-gray-300 hover:text-yellow-400 transition-colors">Services</a></li>
+                        <li><a href="#rapports" class="text-gray-300 hover:text-yellow-400 transition-colors">Rapports</a></li>
+                        <li><a href="#contact" class="text-gray-300 hover:text-yellow-400 transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Services Links -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Nos Services</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="text-gray-300 hover:text-yellow-400 transition-colors">Analyse Politique</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-yellow-400 transition-colors">Consultation Stratégique</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-yellow-400 transition-colors">Production Média</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-yellow-400 transition-colors">Formation</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Social Media & Copyright -->
+            <div class="border-t border-gray-700 mt-8 pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <div class="flex space-x-6 mb-4 md:mb-0">
+                        <a href="https://x.com/MoohTeiDjouaka" target="_blank" 
+                           class="text-gray-400 hover:text-yellow-400 transition-colors">
+                            <i class="fab fa-twitter text-xl"></i>
+                        </a>
+                        <a href="https://facebook.com/alexgustave" target="_blank" 
+                           class="text-gray-400 hover:text-yellow-400 transition-colors">
+                            <i class="fab fa-facebook text-xl"></i>
+                        </a>
+                        <a href="https://instagram.com/agazebaze" target="_blank" 
+                           class="text-gray-400 hover:text-yellow-400 transition-colors">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                        <a href="https://linkedin.com/in/alex-gustave" target="_blank" 
+                           class="text-gray-400 hover:text-yellow-400 transition-colors">
+                            <i class="fab fa-linkedin text-xl"></i>
+                        </a>
+                    </div>
+                    
+                    <div class="text-center md:text-right">
+                        <p class="text-gray-400 text-sm">
+                            © 2024 AGA MEDIA. Tous droits réservés.
+                        </p>
+                        <p class="text-gray-500 text-xs mt-1">
+                            Alex Gustave Azebaze - Journaliste Politique Professionnel
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
     </footer>
 
+    <!-- Scripts -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     <script src="script.js"></script>
 </body>
 </html>
